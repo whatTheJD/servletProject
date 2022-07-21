@@ -18,14 +18,20 @@ public class LoginServlet extends HttpServlet {
         System.out.println("fName: " + fName);
         System.out.println("lName: " + lName);
 
-        response.getWriter().write("Hello " + fName + " " + lName);
+
+        Repository repository = new Repository();
+
+        System.out.println("Clients:");
+        repository.readDb();
+        repository.writeDB(fName, lName);
+
+        response.getWriter().write("Your clients got updated!");
+        response.getWriter().write("New client: " + fName + lName);
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().flush();
         response.getWriter().close();
 
-        Repository repository = new Repository();
-        repository.readDb();
-        repository.writeDB(fName, lName);
+        System.out.println("Clients after insertion: ");
         repository.readDb();
     }
 }
