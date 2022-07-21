@@ -8,6 +8,7 @@
     <artifactId>ServletStart</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
+
     <modules>
         <module>domain</module>
         <module>application</module>

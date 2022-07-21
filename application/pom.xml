@@ -16,4 +16,13 @@
         <maven.compiler.target>18</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>de.openknowledge</groupId>
+            <artifactId>domain</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
 </project>
