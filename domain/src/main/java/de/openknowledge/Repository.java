@@ -8,11 +8,11 @@ import java.sql.Statement;
 
 public class Repository {
 
-    private void writeDB(String fName, String lName) {
+    protected void writeDB(String fName, String lName) {
         try{
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/servletDB", "testuser", "Test123456");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/serlvetDB", "ServletUser", "ForkIt");
             Statement statement = connection.createStatement();
-            String query = ("INSERT INTO 'servletDB'.'members' ('id', 'firstName','lastName') "
+            String query = ("INSERT INTO 'serlvetDB'.'members' ('id', 'firstName','lastName') "
                     + "VALUES ({0},{1},{2});");
 
             query = java.text.MessageFormat.format(query, "'2'", "'" + fName + "'", "'" + lName + "'");
@@ -23,9 +23,9 @@ public class Repository {
         }
     }
 
-    private void readDb(){
+    protected void readDb(){
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/servletDB", "testuser", "Test123456");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/serlvetDB", "ServletUser", "ForkIt");
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT  * FROM members");
 

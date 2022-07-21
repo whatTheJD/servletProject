@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "de.openknowledge.LoginServlet", urlPatterns = { "/LoginServlet" })
+@WebServlet(name = "de.openknowledge.LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
 
     @Override
@@ -22,5 +22,10 @@ public class LoginServlet extends HttpServlet {
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().flush();
         response.getWriter().close();
+
+        Repository repository = new Repository();
+        repository.readDb();
+        repository.writeDB(fName, lName);
+        repository.readDb();
     }
 }
