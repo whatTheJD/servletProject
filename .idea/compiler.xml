@@ -7,7 +7,8 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ServletProject" />
-        <module name="ServletStart" />
+        <module name="application" />
+        <module name="domain" />
       </profile>
     </annotationProcessing>
   </component>
