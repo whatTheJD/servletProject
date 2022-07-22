@@ -18,4 +18,15 @@ public class ClientTest {
         assertEquals(testClient.getFirstName(), resultFirstName);
     }
 
+    @Test
+    public void testGetter_getsLastName() {
+
+        Client testClient = new Client("Hans", "Bauer");
+
+        String resultLastName = "Bauer";
+
+        assertEquals(testClient.getLastName(), resultLastName);
+
+    }
+
 }
