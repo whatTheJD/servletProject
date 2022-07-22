@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ServletProject" />
         <module name="application" />
-        <module name="ServletStart" />
         <module name="domain" />
       </profile>
     </annotationProcessing>
