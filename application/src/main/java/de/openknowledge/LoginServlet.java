@@ -9,6 +9,11 @@ import java.io.IOException;
 
 @WebServlet(name = "de.openknowledge.LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
+    RepositoryInterface repository;
+
+    public LoginServlet(RepositoryInterface repository) {
+        this.repository = repository;
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -19,7 +24,7 @@ public class LoginServlet extends HttpServlet {
         System.out.println("lName: " + lName);
 
 
-        Repository repository = new Repository();
+        //Repository repository = new Repository();
 
         System.out.println("Clients:");
         repository.readDb();

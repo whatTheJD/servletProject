@@ -3,14 +3,15 @@ package de.openknowledge;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
+import org.junit.Test;
 
 import java.io.File;
-import java.sql.SQLException;
 
+public class SaveClientTest {
 
-public class App {
-    public static void main(String[] args) throws LifecycleException, SQLException {
-
+    @Test
+    public void saveClient() throws LifecycleException {
+        //Given
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(8080);
         tomcat.setHostname("localhost");
@@ -20,7 +21,7 @@ public class App {
         File docBase = new File(System.getProperty("java.io.tmpdir"));
         Context context = tomcat.addContext("", docBase.getAbsolutePath());
 
-        LoginServlet loginServlet = new LoginServlet(new Repository());
+        LoginServlet loginServlet = new LoginServlet(new RepositoryInMemory());
 
         Class servletClass = LoginServlet.class;
         Tomcat.addServlet(context, servletClass.getSimpleName(), loginServlet);
@@ -31,5 +32,9 @@ public class App {
         System.out.println("tomcat.getServer().await()");
         tomcat.getServer().await();
 
+        //When
+
+
+        //Then
     }
 }

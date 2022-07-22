@@ -6,9 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Repository {
+public class Repository implements RepositoryInterface {
 
-    protected void writeDB(String fName, String lName) {
+    @Override
+    public void writeDB(String fName, String lName) {
         try{
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/servletDB", "testuser", "Test123456");
             Statement statement = connection.createStatement();
@@ -23,7 +24,8 @@ public class Repository {
         }
     }
 
-    protected void readDb(){
+    @Override
+    public void readDb(){
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/servletDB", "testuser", "Test123456");
             Statement statement = connection.createStatement();
