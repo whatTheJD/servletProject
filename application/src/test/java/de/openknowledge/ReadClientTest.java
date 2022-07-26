@@ -23,12 +23,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Testcontainers
 public class ReadClientTest {
 
-    /*@ClassRule
+/*
+    @ClassRule
     public static MySQLContainer<?> mysql = new MySQLContainer<>("mysql:5.7.37")
             .withDatabaseName("servletDB")
             .withUsername("Test")
             .withPassword("123456")
-            .withInitScript("sql/init.sql");*/
+            .withEnv("MYSQL_ROOT_HOST", "%")
+            .withInitScript("sql/init.sql");
+*/
 
 
     @ClassRule
@@ -39,6 +42,8 @@ public class ReadClientTest {
     @Test
     public void readClient() throws LifecycleException, URISyntaxException, IOException, InterruptedException {
         //Given
+
+
         Tomcat tomcat = new Tomcat();
         tomcat.setPort(8080);
         tomcat.setHostname("localhost");
