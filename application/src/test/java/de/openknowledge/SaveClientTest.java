@@ -4,6 +4,7 @@ import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.http.client.utils.URIBuilder;
+import org.junit.ClassRule;
 import org.junit.Test;
 
 import javax.servlet.http.HttpServletResponse;
@@ -31,6 +32,8 @@ public class SaveClientTest {
 
         File docBase = new File(System.getProperty("java.io.tmpdir"));
         Context context = tomcat.addContext("", docBase.getAbsolutePath());
+
+
 
         LoginServlet loginServlet = new LoginServlet(new RepositoryInMemory());
 
