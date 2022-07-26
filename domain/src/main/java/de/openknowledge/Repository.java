@@ -8,12 +8,30 @@ import java.sql.Statement;
 
 public class Repository implements RepositoryInterface {
 
+
+    private String url;
+    private String username;
+    private String password;
+
+    public Repository(String url, String username, String password) {
+        this.url = url;
+        this.username = username;
+        this.password = password;
+    }
+
+
+    public Repository() {
+        url = "jdbc:mysql://localhost:3306/servletDB";
+        username = "servletDB";
+        password = "Test123456";
+    }
+
     @Override
     public void writeDB(String fName, String lName) {
         try{
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/serlvetDB", "ServletUser", "ForkIt");
+            Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
-            String query = ("INSERT INTO 'serlvetDB'.'members' ('id', 'firstName','lastName') "
+            String query = ("INSERT INTO 'servletDB'.'members' ('id', 'firstName','lastName') "
                     + "VALUES ({0},{1},{2});");
 
             query = java.text.MessageFormat.format(query, "'2'", "'" + fName + "'", "'" + lName + "'");
@@ -27,7 +45,7 @@ public class Repository implements RepositoryInterface {
     @Override
     public void readDb(){
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/serlvetDB", "ServletUser", "ForkIt");
+            Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT  * FROM members");
 
