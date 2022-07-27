@@ -5,12 +5,33 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Repository {
+public class Repository implements RepositoryInterface {
 
-    protected void writeDB(String fName, String lName) {
+
+    private String url;
+    private String username;
+    private String password;
+
+    public Repository(String url, String username, String password) {
+        this.url = url;
+        this.username = username;
+        this.password = password;
+    }
+
+
+    public Repository() {
+        url = "jdbc:mysql://localhost:3306/servletDB";
+        username = "ServletUser";
+        password = "ForkIt";
+    }
+
+    @Override
+    public void writeDB(String fName, String lName) {
         try{
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/servletDB", "testuser", "Test123456");
+            Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
             String query = ("INSERT INTO 'servletDB'.'members' ('id', 'firstName','lastName') "
                     + "VALUES ({0},{1},{2});");
@@ -23,19 +44,20 @@ public class Repository {
         }
     }
 
-    protected void readDb(){
+    @Override
+    public List<Client> readDb(){
+        List<Client> clientList = new ArrayList<>();
         try {
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/servletDB", "testuser", "Test123456");
+            Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT  * FROM members");
-
             while (resultSet.next()){
-                System.out.println("ID: " + resultSet.getString("id"));
-                System.out.println("First Name: " + resultSet.getString("firstName"));
-                System.out.println("Last Name: " + resultSet.getString("lastName"));
+//                System.out.println("ID: " + resultSet.getString("id"));
+                clientList.add(new Client(resultSet.getString("firstName"),resultSet.getString("lastName")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return clientList;
     }
 }

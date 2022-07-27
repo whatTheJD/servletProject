@@ -20,8 +20,10 @@ public class App {
         File docBase = new File(System.getProperty("java.io.tmpdir"));
         Context context = tomcat.addContext("", docBase.getAbsolutePath());
 
+        LoginServlet loginServlet = new LoginServlet(new Repository());
+
         Class servletClass = LoginServlet.class;
-        Tomcat.addServlet(context, servletClass.getSimpleName(), servletClass.getName());
+        Tomcat.addServlet(context, servletClass.getSimpleName(), loginServlet);
         context.addServletMappingDecoded("/LoginServlet/*", servletClass.getSimpleName());
 
         System.out.println("tomcat.start");
