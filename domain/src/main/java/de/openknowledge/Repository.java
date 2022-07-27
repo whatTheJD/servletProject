@@ -53,7 +53,7 @@ public class Repository implements RepositoryInterface {
             ResultSet resultSet = statement.executeQuery("SELECT  * FROM members");
             while (resultSet.next()){
 //                System.out.println("ID: " + resultSet.getString("id"));
-                clientList.add(new Client(resultSet.getString("firstName"),resultSet.getString("lastName")));
+                clientList.add(new Client(resultSet.getString("id"), resultSet.getString("firstName"),resultSet.getString("lastName")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

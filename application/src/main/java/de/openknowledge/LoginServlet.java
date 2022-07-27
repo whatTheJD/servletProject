@@ -24,8 +24,6 @@ public class LoginServlet extends HttpServlet {
         System.out.println("fName: " + fName);
         System.out.println("lName: " + lName);
 
-        System.out.println("Clients:");
-//        repository.readDb();
         repository.writeDB(fName, lName);
 
         response.getWriter().write("Your clients got updated!");
@@ -34,7 +32,6 @@ public class LoginServlet extends HttpServlet {
         response.getWriter().flush();
         response.getWriter().close();
 
-        System.out.println("Clients after insertion: ");
     }
 
     @Override

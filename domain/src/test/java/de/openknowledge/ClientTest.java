@@ -9,7 +9,7 @@ public class ClientTest {
     @Test
     public void testGetter_getsFirstName() {
         //given
-        Client testClient = new Client("Hans", "Bauer");
+        Client testClient = new Client("1", "Hans", "Bauer");
 
         //when
         String resultFirstName = "Hans";
@@ -21,7 +21,7 @@ public class ClientTest {
     @Test
     public void testGetter_getsLastName() {
 
-        Client testClient = new Client("Hans", "Bauer");
+        Client testClient = new Client("1", "Hans", "Bauer");
 
         String resultLastName = "Bauer";
 
