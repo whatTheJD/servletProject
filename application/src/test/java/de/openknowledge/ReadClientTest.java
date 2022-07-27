@@ -36,7 +36,10 @@ public class ReadClientTest {
 
     @ClassRule
     public static MySQLContainer<?> mysql = new MySQLContainer<>(
-            "mysql:5.7.37").withInitScript("sql/init.sql");
+            "mysql:5.7.37").withInitScript("sql/init.sql")
+            .withDatabaseName("servletDB")
+            .withUsername("root")
+            .withPassword("");
 
 
     @Test
@@ -53,7 +56,7 @@ public class ReadClientTest {
         File docBase = new File(System.getProperty("java.io.tmpdir"));
         Context context = tomcat.addContext("", docBase.getAbsolutePath());
 
-        Repository repository = new Repository("jdbc:tc:mysql:5.7.37:///servletDB", mysql.getUsername(),mysql.getPassword());
+        Repository repository = new Repository(mysql.getJdbcUrl(), mysql.getUsername(),mysql.getPassword());
 
         LoginServlet loginServlet = new LoginServlet(repository);
 
@@ -85,5 +88,14 @@ public class ReadClientTest {
 
         //Then
         assertEquals(response.statusCode(), HttpServletResponse.SC_OK);
+
+        HttpRequest request2 = HttpRequest.newBuilder(uri)
+                .version(HttpClient.Version.HTTP_2)
+                .GET()
+                .build();
+        HttpResponse<String> response2 = client.send(request2, HttpResponse.BodyHandlers.ofString());
+        String responseBody2 = response2.body();
+        assertEquals("Client{firstName='TEST', lastName='TEST'}", responseBody2);
+        assertEquals(response2.statusCode(), HttpServletResponse.SC_OK);
     }
 }

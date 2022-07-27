@@ -1,7 +1,9 @@
 package de.openknowledge;
 
+import java.util.List;
+
 public interface RepositoryInterface {
     void writeDB(String fName, String lName);
 
-    void readDb();
+    List<Client> readDb();
 }

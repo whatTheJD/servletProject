@@ -53,13 +53,13 @@ public class SaveClientTest {
                 .setParameter("lName", "TEST");
         URI uri = builder.build();
 
+
         HttpRequest request = HttpRequest.newBuilder(uri)
                 .version(HttpClient.Version.HTTP_2)
                 .POST(HttpRequest.BodyPublishers.noBody())
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         String responseBody = response.body();
-
         //Then
         assertEquals(response.statusCode(), HttpServletResponse.SC_OK);
     }

@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Repository implements RepositoryInterface {
 
@@ -22,8 +24,8 @@ public class Repository implements RepositoryInterface {
 
     public Repository() {
         url = "jdbc:mysql://localhost:3306/servletDB";
-        username = "servletDB";
-        password = "Test123456";
+        username = "ServletUser";
+        password = "ForkIt";
     }
 
     @Override
@@ -43,19 +45,19 @@ public class Repository implements RepositoryInterface {
     }
 
     @Override
-    public void readDb(){
+    public List<Client> readDb(){
+        List<Client> clientList = new ArrayList<>();
         try {
             Connection connection = DriverManager.getConnection(url, username, password);
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT  * FROM members");
-
             while (resultSet.next()){
-                System.out.println("ID: " + resultSet.getString("id"));
-                System.out.println("First Name: " + resultSet.getString("firstName"));
-                System.out.println("Last Name: " + resultSet.getString("lastName"));
+//                System.out.println("ID: " + resultSet.getString("id"));
+                clientList.add(new Client(resultSet.getString("firstName"),resultSet.getString("lastName")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return clientList;
     }
 }

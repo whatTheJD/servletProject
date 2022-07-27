@@ -1,7 +1,7 @@
 package de.openknowledge;
 
-import java.sql.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RepositoryInMemory implements RepositoryInterface {
 
@@ -15,7 +15,7 @@ public class RepositoryInMemory implements RepositoryInterface {
     }
 
     @Override
-    public void readDb() {
-
+    public List<Client> readDb() {
+    return null;
     }
 }
