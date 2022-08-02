@@ -1,11 +1,15 @@
 package de.openknowledge;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Objects;
 
+@Entity
+@Table(name = "TAB_CLIENT")
 public class Client {
-    String id;
-    String firstName;
-    String lastName;
+    private String id;
+    private String firstName;
+    private String lastName;
 
     public Client(String id, String firstName, String lastName) {
         this.id = id;
