@@ -1,42 +1,36 @@
 package de.openknowledge;
 
+import de.openknowledge.infrastructure.AbstractEntity;
+
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.Objects;
 
 @Entity
 @Table(name = "TAB_CLIENT")
-public class Client {
-    private String id;
-    private String firstName;
-    private String lastName;
+public class Client extends AbstractEntity<Integer>{
+    private int id;
 
-    public Client(String id, String firstName, String lastName) {
+    @Embedded
+    private Name name;
+
+
+    public Client(int id, Name name) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.name = name;
     }
 
-    public String getId() {
-        return id;
-    }
-    public String getFirstName() {
-        return firstName;
+    protected Client() {
+        // for JPA
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-    public void setId(String id) {
-        this.id = id;
+    public Name getName() {
+        return name;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setName(Name name) {
+        this.name = name;
     }
 
     @Override
@@ -44,20 +38,19 @@ public class Client {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Objects.equals(firstName, client.firstName) && Objects.equals(lastName, client.lastName);
+        return id == client.id && name.equals(client.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName);
+        return Objects.hash(id, name);
     }
 
     @Override
     public String toString() {
         return "Client{" +
-                "id='" + id + '\'' +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "id=" + id +
+                ", name=" + name +
                 '}';
     }
 }
