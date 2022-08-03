@@ -4,12 +4,16 @@ import de.openknowledge.infrastructure.AbstractEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
-import java.util.Objects;
 
 @Entity
 @Table(name = "TAB_CLIENT")
-public class Client extends AbstractEntity<Integer>{
+public class Client extends AbstractEntity<Integer> {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO.IDENTITY)
     private int id;
 
     @Embedded
@@ -34,23 +38,7 @@ public class Client extends AbstractEntity<Integer>{
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Client client = (Client) o;
-        return id == client.id && name.equals(client.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name);
-    }
-
-    @Override
-    public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", name=" + name +
-                '}';
+    protected Integer getId() {
+        return id;
     }
 }

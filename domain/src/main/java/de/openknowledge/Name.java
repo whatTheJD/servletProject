@@ -1,18 +1,24 @@
 package de.openknowledge;
 
 
+import de.openknowledge.infrastructure.AbstractValueObject;
+
+import javax.persistence.AttributeOverride;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 
 import static org.apache.commons.lang3.Validate.notNull;
 
 @Embeddable
-public class Name {
+public class Name extends AbstractValueObject {
 
     @Embedded
+    @AttributeOverride(name = "value", column = @Column(name = "firstName"))
     private FirstName first;
 
     @Embedded
+    @AttributeOverride(name = "value", column = @Column(name = "lastName"))
     private LastName last;
 
     public Name(FirstName firstName, LastName lastName) {
@@ -52,6 +58,11 @@ public class Name {
         }
         Name name = (Name)object;
         return getFirst().equals(name.getFirst()) && getLast().equals(name.getLast());
+    }
+
+    @Override
+    protected Object[] values() {
+        return new Object[0];
     }
 }
 
