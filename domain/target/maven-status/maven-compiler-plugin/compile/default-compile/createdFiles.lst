@@ -1,4 +1,10 @@
 de/openknowledge/RepositoryInMemory.class
-de/openknowledge/Repository.class
 de/openknowledge/Client.class
 de/openknowledge/RepositoryInterface.class
+de/openknowledge/infrastructure/AbstractValueObject.class
+de/openknowledge/infrastructure/AbstractSimpleValueObject.class
+de/openknowledge/Name.class
+de/openknowledge/Repository.class
+de/openknowledge/infrastructure/AbstractEntity.class
+de/openknowledge/LastName.class
+de/openknowledge/FirstName.class

@@ -7,21 +7,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TAB_CLIENT")
+@Table(name = "members")
+@NamedQueries({@NamedQuery(name = Client.readAll, query = "SELECT c from Client c")})
 public class Client extends AbstractEntity<Integer> {
+    public static final String readAll = "Client.readAll";
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Embedded
     private Name name;
 
 
-    public Client(int id, Name name) {
-        this.id = id;
+    public Client(Name name) {
         this.name = name;
     }
 
