@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
         List<Client> clientList = repository.readDb();
         for (Client client : clientList) {
-            response.getWriter().write(client.toString());
+            response.getWriter().write(client.getNameAsString());
         }
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().flush();

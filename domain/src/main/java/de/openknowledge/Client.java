@@ -44,4 +44,8 @@ public class Client extends AbstractEntity<Integer> {
     protected Integer getId() {
         return id;
     }
+
+    public String getNameAsString(){
+        return name.getFirst().getValue() + " " + name.getLast().getValue();
+    }
 }
