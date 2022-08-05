@@ -41,16 +41,7 @@ public class ReadClientTest {
 
 
     //TODO Nutze die URL vom TestContainer, statt der "richtigen" URL
-
-    //private Client client;
-
-    /*@BeforeEach
-    public void insertTestdata(){
-        client = new Client(new Name(new FirstName("Max"), new LastName("Mustermann")));
-        entityManager.persist(client);
-        entityManager.getTransaction().commit();
-        entityManager.clear();
-    }*/
+    private Client client;
 
     static EntityManagerFactory entityManagerFactory;
     EntityManager entityManager;
@@ -69,8 +60,13 @@ public class ReadClientTest {
     }
 
     @BeforeEach
-    public void createEntityManager(){
+    public void insertTestdata(){
         entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        client = new Client(new Name(new FirstName("Max"), new LastName("Mustermann")));
+        entityManager.persist(client);
+        entityManager.getTransaction().commit();
+        entityManager.clear();
     }
 
     @Test
@@ -96,33 +92,15 @@ public class ReadClientTest {
         System.out.println("tomcat.start");
         tomcat.start();
         System.out.println("tomcat.getServer().await()");
-        //tomcat.getServer().await();
 
-        //Todo Testdaten vorher übergeben
-        entityManager.getTransaction().begin();
-
-
-
-        //When
         HttpClient client = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_2)
                 .build();
         URIBuilder builder = new URIBuilder();
-        builder.setScheme("http").setHost("localhost:8080").setPath("/LoginServlet")
-                .setParameter("fName", "Test")
-                .setParameter("lName", "Test");
+        builder.setScheme("http").setHost("localhost:8080").setPath("/LoginServlet");
         URI uri = builder.build();
 
-        HttpRequest request = HttpRequest.newBuilder(uri)
-                .version(HttpClient.Version.HTTP_2)
-                .POST(HttpRequest.BodyPublishers.noBody())
-                .build();
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        String responseBody = response.body();
-
-        //Then
-        assertEquals(response.statusCode(), HttpServletResponse.SC_OK);
-
+        //When
         HttpRequest request2 = HttpRequest.newBuilder(uri)
                 .version(HttpClient.Version.HTTP_2)
                 .GET()
@@ -130,7 +108,9 @@ public class ReadClientTest {
         HttpResponse<String> response2 = client.send(request2, HttpResponse.BodyHandlers.ofString());
         String responseBody2 = response2.body();
 
-        assertEquals("Test Test", responseBody2);
+
+        //Then
+        assertEquals("Max Mustermann", responseBody2);
         assertEquals(response2.statusCode(), HttpServletResponse.SC_OK);
         entityManager.close();
     }
