@@ -1,9 +1,6 @@
 package de.openknowledge;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
-import org.apache.catalina.Context;
-import org.apache.catalina.LifecycleException;
-import org.apache.catalina.startup.Tomcat;
 import org.apache.cxf.endpoint.Server;
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
 import org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider;
@@ -11,15 +8,13 @@ import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
 
 import javax.persistence.Persistence;
 import javax.ws.rs.core.MediaType;
-import java.io.File;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 //TODO Überarbeitung DB u.a. Columns entweder alles groß oder klein in der init.sql
-
+//TODO Füge ok checkstyle hinzu
 public class App {
     public static void main(String[] args) throws Exception {
 
@@ -50,6 +45,5 @@ public class App {
         System.out.println("Server exiting");
         server.destroy();
         System.exit(0);
-
     }
 }

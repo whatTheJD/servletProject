@@ -2,6 +2,8 @@ package de.openknowledge;
 
 import de.openknowledge.infrastructure.AbstractEntity;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,8 +16,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "members")
-@NamedQueries({@NamedQuery(name = Client.readAll, query = "SELECT c from Client c"),
-        @NamedQuery(name = Client.readByName, query = "SELECT c from Client c where c.name =: name")})
+@NamedQueries({@NamedQuery(name = Client.readAll, query = "SELECT c from Client c")})
+        //@NamedQuery(name = Client.readByName, query = "SELECT c from Client c where c.first=:firstName AND c.last=:lastName")})
 @XmlRootElement(name = "Client")
 public class Client extends AbstractEntity<Integer> {
     public static final String readAll = "Client.readAll";
@@ -24,24 +26,23 @@ public class Client extends AbstractEntity<Integer> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+
     @Embedded
-    private Name name;
+    @AttributeOverride(name = "value", column = @Column(name = "firstName"))
+    private FirstName firstName;
+
+    @Embedded
+    @AttributeOverride(name = "value", column = @Column(name = "lastName"))
+    private LastName lastName;
 
 
-    public Client(Name name) {
-        this.name = name;
+    public Client(FirstName firstName, LastName lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     protected Client() {
         // for JPA
-    }
-
-    public Name getName() {
-        return name;
-    }
-
-    public void setName(Name name) {
-        this.name = name;
     }
 
     @Override
@@ -49,7 +50,11 @@ public class Client extends AbstractEntity<Integer> {
         return id;
     }
 
-    public String getNameAsString(){
-        return name.getFirst().getValue() + " " + name.getLast().getValue();
+    public String getFirstName(){
+        return firstName.getValue();
+    }
+
+    public String getLastName(){
+        return lastName.getValue();
     }
 }

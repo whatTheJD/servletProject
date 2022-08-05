@@ -31,7 +31,7 @@ public class LoginResource {
         return clientList;
     }
 
-    @GET
+ /*   @GET
     @Path("clients/{name}")
     public Client getClient(@PathParam("name") String name) {
         Optional<Client> client = repository.getClient(name);
@@ -40,11 +40,13 @@ public class LoginResource {
             return null;
         }
         return client.get();
-    }
+    }*/
 
 
     @POST
-    @Path("client")
+    @Path("clients")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response createClient(Client client){
         repository.writeDB(client);
         return Response.ok(client).build();

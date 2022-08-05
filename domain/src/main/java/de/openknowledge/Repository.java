@@ -20,7 +20,7 @@ public class Repository implements RepositoryInterface {
 
     @Override
     public void writeDB(String fName, String lName) {
-        Client client = new Client(new Name(new FirstName(fName), new LastName(lName)));
+        Client client = new Client(new FirstName(fName), new LastName(lName));
         writeDB(client);
     }
 
@@ -40,8 +40,8 @@ public class Repository implements RepositoryInterface {
     }
 
 
-    public Optional<Client> getClient(String name){
-        Optional<Client> client = entityManager.createNamedQuery(Client.readByName).setParameter("name", name).getResultStream().findAny();
+    /*public Optional<Client> getClient(String first, String last){
+        Optional<Client> client = entityManager.createNamedQuery(Client.readByName).setParameter("firstName", first).setParameter("lastName", last).getResultStream().findAny();
         return client;
-    }
+    }*/
 }
