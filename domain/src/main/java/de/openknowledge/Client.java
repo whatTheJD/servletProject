@@ -1,59 +1,51 @@
 package de.openknowledge;
 
-import java.util.Objects;
+import de.openknowledge.infrastructure.AbstractEntity;
 
-public class Client {
-    String id;
-    String firstName;
-    String lastName;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
-    public Client(String id, String firstName, String lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+@Entity
+@Table(name = "members")
+@NamedQueries({@NamedQuery(name = Client.readAll, query = "SELECT c from Client c")})
+public class Client extends AbstractEntity<Integer> {
+    public static final String readAll = "Client.readAll";
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Embedded
+    private Name name;
+
+
+    public Client(Name name) {
+        this.name = name;
     }
 
-    public String getId() {
+    protected Client() {
+        // for JPA
+    }
+
+    public Name getName() {
+        return name;
+    }
+
+    public void setName(Name name) {
+        this.name = name;
+    }
+
+    @Override
+    protected Integer getId() {
         return id;
     }
-    public String getFirstName() {
-        return firstName;
-    }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Client client = (Client) o;
-        return Objects.equals(firstName, client.firstName) && Objects.equals(lastName, client.lastName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(firstName, lastName);
-    }
-
-    @Override
-    public String toString() {
-        return "Client{" +
-                "id='" + id + '\'' +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+    public String getNameAsString(){
+        return name.getFirst().getValue() + " " + name.getLast().getValue();
     }
 }
