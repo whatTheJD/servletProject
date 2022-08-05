@@ -97,7 +97,6 @@ public class SaveClientTest {
                 .setParameter("lName", "Test");
         URI uri = builder.build();
 
-
         HttpRequest request = HttpRequest.newBuilder(uri)
                 .version(HttpClient.Version.HTTP_2)
                 .POST(HttpRequest.BodyPublishers.noBody())
