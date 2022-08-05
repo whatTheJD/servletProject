@@ -6,6 +6,7 @@ import org.apache.catalina.startup.Tomcat;
 import org.apache.http.client.utils.URIBuilder;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.junit.jupiter.Container;
@@ -62,7 +63,9 @@ public class SaveClientTest {
         entityManager = entityManagerFactory.createEntityManager();
     }
 
+    //Todo Lösche @Disable um Test zu starten
     @Test
+    @Disabled
     public void saveClient() throws LifecycleException, URISyntaxException, IOException, InterruptedException {
         //Given
         Tomcat tomcat = new Tomcat();
