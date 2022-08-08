@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.29">
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/Client.java">
+<error line="2" severity="error" message="Zeile entspricht nicht der erwarteten Kopfzeile &apos; * Copyright \(C\) open knowledge GmbH\.&apos;." source="com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck"/>
+<error line="5" severity="error" message="Falsche Reihenfolge des Imports von &apos;javax.persistence.AttributeOverride&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="23" column="32" severity="error" message="Der Bezeichner &apos;readAll&apos; entspricht nicht dem Muster &apos;^[A-Z]+(_[A-Z]+)*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.ConstantNameCheck"/>
+<error line="24" column="32" severity="error" message="Der Bezeichner &apos;readByName&apos; entspricht nicht dem Muster &apos;^[A-Z]+(_[A-Z]+)*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.ConstantNameCheck"/>
+<error line="54" column="33" severity="error" message="Vor &apos;{&apos; fehlt ein Leerzeichen." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="58" column="32" severity="error" message="Vor &apos;{&apos; fehlt ein Leerzeichen." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+</file>
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/LastName.java">
+<error line="2" severity="error" message="Zeile entspricht nicht der erwarteten Kopfzeile &apos; * Copyright \(C\) open knowledge GmbH\.&apos;." source="com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck"/>
+<error line="5" severity="error" message="Falsche Reihenfolge des Imports von &apos;javax.persistence.Embeddable&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="7" severity="error" message="Falsche Reihenfolge des Imports von &apos;org.apache.commons.lang3.Validate.isTrue&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/RepositoryInterface.java">
+<error line="1" severity="error" message="Die erforderliche Kopfzeile fehlt - Datei hat nicht genug Zeilen." source="com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck"/>
+<error line="6" column="10" severity="error" message="Der Bezeichner &apos;writeDB&apos; entspricht nicht dem Muster &apos;^[a-z]+([A-Z][a-z]+)*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+</file>
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/Repository.java">
+<error line="2" severity="error" message="Zeile entspricht nicht der erwarteten Kopfzeile &apos; * Copyright \(C\) open knowledge GmbH\.&apos;." source="com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck"/>
+<error line="4" severity="error" message="Falsche Reihenfolge des Imports von &apos;java.sql.Connection&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="4" column="8" severity="error" message="Nicht verwendeter Import - java.sql.Connection." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="5" column="8" severity="error" message="Nicht verwendeter Import - java.sql.DriverManager." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="6" column="8" severity="error" message="Nicht verwendeter Import - java.sql.ResultSet." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="7" column="8" severity="error" message="Nicht verwendeter Import - java.sql.SQLException." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="8" column="8" severity="error" message="Nicht verwendeter Import - java.sql.Statement." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="9" column="8" severity="error" message="Nicht verwendeter Import - java.util.ArrayList." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="11" column="8" severity="error" message="Nicht verwendeter Import - java.util.Optional." source="com.puppycrawl.tools.checkstyle.checks.imports.UnusedImportsCheck"/>
+<error line="27" column="17" severity="error" message="Der Bezeichner &apos;writeDB&apos; entspricht nicht dem Muster &apos;^[a-z]+([A-Z][a-z]+)*$&apos;." source="com.puppycrawl.tools.checkstyle.checks.naming.MethodNameCheck"/>
+<error line="28" column="9" severity="error" message="Nach &apos;if&apos; fehlt ein Leerzeichen." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="28" column="55" severity="error" message="Vor &apos;{&apos; fehlt ein Leerzeichen." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="37" column="33" severity="error" message="Vor &apos;{&apos; fehlt ein Leerzeichen." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="44" severity="error" message="Zeile ist 176 Zeichen lang (Obergrenze ist 140)." source="com.puppycrawl.tools.checkstyle.checks.sizes.LineLengthCheck"/>
+</file>
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/Name.java">
+<error line="2" severity="error" message="Zeile entspricht nicht der erwarteten Kopfzeile &apos; * Copyright \(C\) open knowledge GmbH\.&apos;." source="com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck"/>
+<error line="6" severity="error" message="Falsche Reihenfolge des Imports von &apos;javax.persistence.AttributeOverride&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="11" severity="error" message="Falsche Reihenfolge des Imports von &apos;org.apache.commons.lang3.Validate.notNull&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/infrastructure/AbstractValueObject.java">
+<error line="2" severity="error" message="Zeile entspricht nicht der erwarteten Kopfzeile &apos; * Copyright \(C\) open knowledge GmbH\.&apos;." source="com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck"/>
+<error line="54" severity="error" message="&apos;||&apos; hat eine unerwartete Einrückungstiefe von 16 (erwartet: 12)." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+</file>
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/infrastructure/AbstractEntity.java">
+<error line="2" severity="error" message="Zeile entspricht nicht der erwarteten Kopfzeile &apos; * Copyright \(C\) open knowledge GmbH\.&apos;." source="com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck"/>
+<error line="4" severity="error" message="Falsche Reihenfolge des Imports von &apos;java.io.Serializable&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/infrastructure/AbstractSimpleValueObject.java">
+<error line="1" severity="error" message="Datei endet nicht mit einem Zeilenumbruch." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+<error line="2" severity="error" message="Zeile entspricht nicht der erwarteten Kopfzeile &apos; * Copyright \(C\) open knowledge GmbH\.&apos;." source="com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck"/>
+<error line="7" severity="error" message="Falsche Reihenfolge des Imports von &apos;java.io.Serializable&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="9" severity="error" message="Falsche Reihenfolge des Imports von &apos;javax.persistence.AccessType.FIELD&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="37" severity="error" message="&apos;implements&apos; hat eine unerwartete Einrückungstiefe von 8 (erwartet: 4)." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+<error line="60" column="46" severity="error" message="Die Variable &apos;value&apos; verbirgt ein Feld." source="com.puppycrawl.tools.checkstyle.checks.coding.HiddenFieldCheck"/>
+<error line="86" severity="error" message="&apos;||&apos; hat eine unerwartete Einrückungstiefe von 16 (erwartet: 12)." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
+</file>
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/FirstName.java">
+<error line="2" severity="error" message="Zeile entspricht nicht der erwarteten Kopfzeile &apos; * Copyright \(C\) open knowledge GmbH\.&apos;." source="com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck"/>
+<error line="5" severity="error" message="Falsche Reihenfolge des Imports von &apos;javax.persistence.Embeddable&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+<error line="7" severity="error" message="Falsche Reihenfolge des Imports von &apos;org.apache.commons.lang3.Validate.isTrue&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
+</file>
+</checkstyle>
