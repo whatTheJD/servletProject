@@ -1,0 +1,10 @@
+-------------------------------------------------------------------------------
+Test set: de.openknowledge.SaveClientTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 17.219 s <<< FAILURE! - in de.openknowledge.SaveClientTest
+saveClient  Time elapsed: 0.006 s  <<< ERROR!
+org.apache.cxf.service.factory.ServiceConstructionException
+	at de.openknowledge.SaveClientTest.saveClient(SaveClientTest.java:98)
+Caused by: org.apache.cxf.service.factory.ServiceConstructionException: There is an endpoint already running on http://localhost:8080/.
+	at de.openknowledge.SaveClientTest.saveClient(SaveClientTest.java:98)
+

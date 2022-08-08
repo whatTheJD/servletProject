@@ -1,40 +1,49 @@
 package de.openknowledge;
 
-import org.apache.catalina.Context;
-import org.apache.catalina.LifecycleException;
-import org.apache.catalina.startup.Tomcat;
+import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
+import org.apache.cxf.endpoint.Server;
+import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
+import org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider;
+import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
 
 import javax.persistence.Persistence;
-import java.io.File;
-import java.sql.SQLException;
+import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-//TODO Überarbeitung DB u.a. Columns entweder alles groß oder klein in der init.sql
+//TODO Füge ok checkstyle und jacoco hinzu
 
 public class App {
-    public static void main(String[] args) throws LifecycleException, SQLException {
+    public static void main(String[] args) throws Exception {
 
-        Tomcat tomcat = new Tomcat();
-        tomcat.setPort(8080);
-        tomcat.setHostname("localhost");
-        String appBase = ".";
-        tomcat.getHost().setAppBase(appBase);
+        JAXRSServerFactoryBean factoryBean = new JAXRSServerFactoryBean();
+        factoryBean.setResourceClasses(LoginResource.class);
 
+        factoryBean.setResourceProvider(
+                new SingletonResourceProvider(
+                        new LoginResource(
+                        new Repository(Persistence.createEntityManagerFactory("servletDB")
+                        .createEntityManager()))));
 
-        File docBase = new File(System.getProperty("java.io.tmpdir"));
-        Context context = tomcat.addContext("", docBase.getAbsolutePath());
+        Map<Object, Object> extensionMappings = new HashMap<Object, Object>();
+        extensionMappings.put("json", MediaType.APPLICATION_JSON);
+        factoryBean.setExtensionMappings(extensionMappings);
 
-        LoginServlet loginServlet = new LoginServlet(
-                new Repository(Persistence.createEntityManagerFactory("servletDB")
-                .createEntityManager()));
+        List<Object> providers = new ArrayList<Object>();
+        providers.add(new JAXBElementProvider());
+        providers.add(new JacksonJsonProvider());
+        factoryBean.setProviders(providers);
 
-        Class servletClass = LoginServlet.class;
-        Tomcat.addServlet(context, servletClass.getSimpleName(), loginServlet);
-        context.addServletMappingDecoded("/LoginServlet/*", servletClass.getSimpleName());
+        factoryBean.setAddress("http://localhost:8080/");
 
-        System.out.println("tomcat.start");
-        tomcat.start();
-        System.out.println("tomcat.getServer().await()");
-        tomcat.getServer().await();
+        Server server = factoryBean.create();
 
+        System.out.println("Server ready...");
+        Thread.sleep(60 * 1000);
+        System.out.println("Server exiting");
+        server.destroy();
+        System.exit(0);
     }
 }

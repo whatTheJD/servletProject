@@ -1,8 +1,13 @@
 package de.openknowledge;
 
+import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
+import org.apache.cxf.endpoint.Server;
+import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
+import org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider;
+import org.apache.cxf.jaxrs.provider.JAXBElementProvider;
 import org.apache.http.client.utils.URIBuilder;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -16,6 +21,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.core.MediaType;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -23,7 +29,9 @@ import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -39,7 +47,6 @@ public class ReadClientTest {
             .withPassword("");
 
 
-    //TODO Nutze die URL vom TestContainer, statt der "richtigen" URL
     private Client client;
 
     static EntityManagerFactory entityManagerFactory;
@@ -62,7 +69,7 @@ public class ReadClientTest {
     public void insertTestdata(){
         entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
-        client = new Client(new Name(new FirstName("Max"), new LastName("Mustermann")));
+        client = new Client(new FirstName("Max"), new LastName("Mustermann"));
         entityManager.persist(client);
         entityManager.getTransaction().commit();
         entityManager.clear();
@@ -71,32 +78,32 @@ public class ReadClientTest {
     @Test
     public void readClient() throws LifecycleException, URISyntaxException, IOException, InterruptedException {
         //Given
-        Tomcat tomcat = new Tomcat();
-        tomcat.setPort(8080);
-        tomcat.setHostname("localhost");
-        String appBase = ".";
-        tomcat.getHost().setAppBase(appBase);
+        JAXRSServerFactoryBean factoryBean = new JAXRSServerFactoryBean();
+        factoryBean.setResourceClasses(LoginResource.class);
 
-        File docBase = new File(System.getProperty("java.io.tmpdir"));
-        Context context = tomcat.addContext("", docBase.getAbsolutePath());
+        factoryBean.setResourceProvider(
+                new SingletonResourceProvider(
+                        new LoginResource(
+                                new Repository(entityManager))));
 
-        Repository repository = new Repository(entityManager);
+        Map<Object, Object> extensionMappings = new HashMap<Object, Object>();
+        extensionMappings.put("json", MediaType.APPLICATION_JSON);
+        factoryBean.setExtensionMappings(extensionMappings);
 
-        LoginServlet loginServlet = new LoginServlet(repository);
+        List<Object> providers = new ArrayList<Object>();
+        providers.add(new JAXBElementProvider());
+        providers.add(new JacksonJsonProvider());
+        factoryBean.setProviders(providers);
 
-        Class servletClass = LoginServlet.class;
-        Tomcat.addServlet(context, servletClass.getSimpleName(), loginServlet);
-        context.addServletMappingDecoded("/LoginServlet/*", servletClass.getSimpleName());
+        factoryBean.setAddress("http://localhost:8080/");
 
-        System.out.println("tomcat.start");
-        tomcat.start();
-        System.out.println("tomcat.getServer().await()");
+        Server server = factoryBean.create();
 
         HttpClient client = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_2)
                 .build();
         URIBuilder builder = new URIBuilder();
-        builder.setScheme("http").setHost("localhost:8080").setPath("/LoginServlet");
+        builder.setScheme("http").setHost("localhost:8080").setPath("/login/clients");
         URI uri = builder.build();
 
         //When
@@ -108,9 +115,11 @@ public class ReadClientTest {
         String responseBody2 = response2.body();
 
 
+        //Todo Passe Assert an
         //Then
-        assertEquals("Max Mustermann", responseBody2);
+        assertEquals("[{\"firstName\":\"Max\",\"lastName\":\"Mustermann\"}]", responseBody2);
         assertEquals(response2.statusCode(), HttpServletResponse.SC_OK);
+        server.destroy();
         entityManager.close();
     }
 }
