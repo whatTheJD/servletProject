@@ -13,8 +13,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//TODO Überarbeitung DB u.a. Columns entweder alles groß oder klein in der init.sql
-//TODO Füge ok checkstyle hinzu
+//TODO Füge ok checkstyle und jacoco hinzu
+
 public class App {
     public static void main(String[] args) throws Exception {
 

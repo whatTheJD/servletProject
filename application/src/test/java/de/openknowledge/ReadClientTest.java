@@ -47,7 +47,6 @@ public class ReadClientTest {
             .withPassword("");
 
 
-    //TODO Nutze die URL vom TestContainer, statt der "richtigen" URL
     private Client client;
 
     static EntityManagerFactory entityManagerFactory;

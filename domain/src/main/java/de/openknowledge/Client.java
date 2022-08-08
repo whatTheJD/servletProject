@@ -26,6 +26,7 @@ public class Client extends AbstractEntity<Integer> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    //TODO Beachte, dass die Variablen analog zu den ValueObjects benannt sein müssen!
 
     @Embedded
     @AttributeOverride(name = "value", column = @Column(name = "firstName"))
