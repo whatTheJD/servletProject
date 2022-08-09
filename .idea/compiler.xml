@@ -12,4 +12,10 @@
       </profile>
     </annotationProcessing>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="application" options="--enable-preview" />
+      <module name="domain" options="--enable-preview" />
+    </option>
+  </component>
 </project>

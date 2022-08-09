@@ -5,17 +5,5 @@ _
 /domain/src/main/java/de/openknowledge/Name.java,0/5/0521d2d969a2378013d38c9dd58a8122081467d4
 D
 frontend/mystyle.css,1/0/103e8ff53c295a19448ba28ead5315f4f2267dc4
-e
-5domain/src/main/java/de/openknowledge/Repository.java,6/d/6d35488704bd79d95f2db002780e2cfad1356d2f
-m
-=application/src/main/java/de/openknowledge/LoginResource.java,c/4/c4f5a66f89f2720e447836e0128016a92f53eb43
 n
 >application/src/test/java/de/openknowledge/SaveClientTest.java,a/6/a6aa3d99c5579f391f6f7860dc34cd07f58e2819
-l
-<application/src/main/java/de/openknowledge/LoginServlet.java,9/7/9781070fc2d85a3ae9393cf0575349856c67c8f5
-7
-pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
-C
-application/pom.xml,c/8/c8e09e04d708c7173c1ba2685d2316cc2ad28f74
->
-domain/pom.xml,8/b/8b11330a6810846535e4b5ba2024ccfcee112862

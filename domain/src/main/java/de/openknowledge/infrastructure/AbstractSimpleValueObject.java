@@ -33,8 +33,7 @@ import static org.apache.commons.lang3.Validate.notNull;
  */
 @MappedSuperclass
 @Access(FIELD)
-public abstract class AbstractSimpleValueObject<V extends Comparable<? super V>>
-        implements Comparable<AbstractSimpleValueObject<V>>, Serializable {
+public abstract class AbstractSimpleValueObject<V extends Comparable<? super V>> implements Comparable<AbstractSimpleValueObject<V>>, Serializable {
 
     public static final String VALUE = "value";
 
@@ -82,8 +81,7 @@ public abstract class AbstractSimpleValueObject<V extends Comparable<? super V>>
         if (this == object) {
             return true;
         }
-        if (!(object instanceof AbstractSimpleValueObject)
-                || !(object.getClass().isAssignableFrom(getClass()) || getClass().isAssignableFrom(object.getClass()))) {
+        if (!(object instanceof AbstractSimpleValueObject) || !(object.getClass().isAssignableFrom(getClass()) || getClass().isAssignableFrom(object.getClass()))) {
             return false;
         }
         AbstractSimpleValueObject<V> valueObject = (AbstractSimpleValueObject<V>)object;

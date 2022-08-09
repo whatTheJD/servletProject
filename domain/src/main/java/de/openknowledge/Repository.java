@@ -1,14 +1,7 @@
 package de.openknowledge;
 
 import javax.persistence.EntityManager;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class Repository implements RepositoryInterface {
 
@@ -19,13 +12,13 @@ public class Repository implements RepositoryInterface {
     }
 
     @Override
-    public void writeDB(String fName, String lName) {
+    public void writeDb(String fName, String lName) {
         Client client = new Client(new FirstName(fName), new LastName(lName));
-        writeDB(client);
+        writeDb(client);
     }
 
-    public void writeDB(Client client) {
-        if(!entityManager.getTransaction().isActive()){
+    public void writeDb(Client client) {
+        if (!entityManager.getTransaction().isActive()) {
             entityManager.getTransaction().begin();
         }
         entityManager.persist(client);
@@ -34,8 +27,8 @@ public class Repository implements RepositoryInterface {
     }
 
     @Override
-    public List<Client> readDb(){
-        List<Client> clientList = entityManager.createNamedQuery(Client.readAll).getResultList();
+    public List<Client> readDb() {
+        List<Client> clientList = entityManager.createNamedQuery(Client.READ_ALL).getResultList();
         return clientList;
     }
 

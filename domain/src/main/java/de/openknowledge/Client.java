@@ -12,16 +12,17 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "members")
-@NamedQueries({@NamedQuery(name = Client.readAll, query = "SELECT c from Client c")})
+@NamedQueries({@NamedQuery(name = Client.READ_ALL, query = "SELECT c from Client c")})
         //@NamedQuery(name = Client.readByName, query = "SELECT c from Client c where c.first=:firstName AND c.last=:lastName")})
 @XmlRootElement(name = "Client")
 public class Client extends AbstractEntity<Integer> {
-    public static final String readAll = "Client.readAll";
-    public static final String readByName = "Client.readByName";
+    public static final String READ_ALL = "Client.readAll";
+    public static final String READ_BY_NAME = "Client.readByName";
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -51,11 +52,12 @@ public class Client extends AbstractEntity<Integer> {
         return id;
     }
 
-    public String getFirstName(){
+    public String getFirstName() {
         return firstName.getValue();
     }
 
-    public String getLastName(){
+    public String getLastName() {
         return lastName.getValue();
     }
+
 }

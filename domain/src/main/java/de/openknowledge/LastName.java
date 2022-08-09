@@ -1,10 +1,11 @@
 package de.openknowledge;
 
+import static org.apache.commons.lang3.Validate.isTrue;
+
 import de.openknowledge.infrastructure.AbstractSimpleValueObject;
 
 import javax.persistence.Embeddable;
 
-import static org.apache.commons.lang3.Validate.isTrue;
 
 @Embeddable
 public class LastName extends AbstractSimpleValueObject<String> {

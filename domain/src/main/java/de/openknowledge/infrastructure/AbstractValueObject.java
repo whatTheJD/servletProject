@@ -50,8 +50,7 @@ public abstract class AbstractValueObject {
         if (this == object) {
             return true;
         }
-        if (!(object instanceof AbstractValueObject)
-                || !(object.getClass().isAssignableFrom(getClass()) || getClass().isAssignableFrom(object.getClass()))) {
+        if (!(object instanceof AbstractValueObject) || !(object.getClass().isAssignableFrom(getClass()) || getClass().isAssignableFrom(object.getClass()))) {
             return false;
         }
         AbstractValueObject valueObject = (AbstractValueObject)object;
