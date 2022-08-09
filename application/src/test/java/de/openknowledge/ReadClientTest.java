@@ -1,9 +1,7 @@
 package de.openknowledge;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
-import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
-import org.apache.catalina.startup.Tomcat;
 import org.apache.cxf.endpoint.Server;
 import org.apache.cxf.jaxrs.JAXRSServerFactoryBean;
 import org.apache.cxf.jaxrs.lifecycle.SingletonResourceProvider;
