@@ -1,7 +1,9 @@
 package de.openknowledge;
 
-import javax.persistence.EntityManager;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+
 
 public class Repository implements RepositoryInterface {
 
@@ -34,7 +36,10 @@ public class Repository implements RepositoryInterface {
 
 
     /*public Optional<Client> getClient(String first, String last){
-        Optional<Client> client = entityManager.createNamedQuery(Client.readByName).setParameter("firstName", first).setParameter("lastName", last).getResultStream().findAny();
+        Optional<Client> client = entityManager.createNamedQuery(Client.readByName)
+        .setParameter("firstName", first)
+        .setParameter("lastName", last)
+        .getResultStream().findAny();
         return client;
     }*/
 }

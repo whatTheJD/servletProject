@@ -2,9 +2,10 @@ package de.openknowledge;
 
 import static org.apache.commons.lang3.Validate.isTrue;
 
+import javax.persistence.Embeddable;
+
 import de.openknowledge.infrastructure.AbstractSimpleValueObject;
 
-import javax.persistence.Embeddable;
 
 
 @Embeddable

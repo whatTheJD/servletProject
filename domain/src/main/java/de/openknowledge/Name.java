@@ -1,15 +1,13 @@
 package de.openknowledge;
 
-
-import de.openknowledge.infrastructure.AbstractValueObject;
+import static org.apache.commons.lang3.Validate.notNull;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 
-import static org.apache.commons.lang3.Validate.notNull;
-
+import de.openknowledge.infrastructure.AbstractValueObject;
 @Embeddable
 public class Name extends AbstractValueObject {
 

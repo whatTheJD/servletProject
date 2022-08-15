@@ -1,7 +1,5 @@
 package de.openknowledge;
 
-import de.openknowledge.infrastructure.AbstractEntity;
-
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -12,8 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-
 import javax.xml.bind.annotation.XmlRootElement;
+
+import de.openknowledge.infrastructure.AbstractEntity;
+
 
 @Entity
 @Table(name = "members")

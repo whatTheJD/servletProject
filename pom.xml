@@ -178,7 +178,7 @@
                             <goal>checkstyle</goal>
                         </goals>
                         <configuration>
-                            <configLocation>${project.basedir}/src/main/checkstyle/configuration.xml</configLocation>
+                            <configLocation>${project.basedir}/checkstyle/configuration.xml</configLocation>
                             <includeTestSourceDirectory>false</includeTestSourceDirectory>
                         </configuration>
                     </execution>
@@ -189,7 +189,7 @@
                             <goal>checkstyle</goal>
                         </goals>
                         <configuration>
-                            <configLocation>${project.basedir}/src/main/checkstyle/test-configuration.xml
+                            <configLocation>${project.basedir}/checkstyle/test-configuration.xml
                             </configLocation>
                             <failsOnError>true</failsOnError>
                             <consoleOutput>true</consoleOutput>

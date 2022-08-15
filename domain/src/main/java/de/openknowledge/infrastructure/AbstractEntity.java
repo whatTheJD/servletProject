@@ -1,7 +1,8 @@
 package de.openknowledge.infrastructure;
 
-import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
+
+import javax.persistence.MappedSuperclass;
 
 /**
  * Base class for JPA entities. Correctly implements {@link #equals(Object)}, {@link #hashCode()} and {@link #toString()}.

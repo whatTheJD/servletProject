@@ -1,12 +1,13 @@
 package de.openknowledge.infrastructure;
 
+import java.io.Serializable;
+
 import javax.persistence.Access;
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
-import java.io.Serializable;
-
 import static javax.persistence.AccessType.FIELD;
+
 import static org.apache.commons.lang3.Validate.notNull;
 
 /**
