@@ -1,21 +1,36 @@
 package de.openknowledge;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Objects;
 
+@Entity
+@Table(name = "members")
 public class Client {
-    String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id;
+
+    @Column(name = "firstName")
     String firstName;
+
+    @Column(name = "lastName")
     String lastName;
 
-    public Client(String id, String firstName, String lastName) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+//    public Client(Long id, String firstName, String lastName) {
+//        this.id = id;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//    }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
+
     public String getFirstName() {
         return firstName;
     }
@@ -23,7 +38,8 @@ public class Client {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-    public void setId(String id) {
+
+    public void setId(Long id) {
         this.id = id;
     }
 

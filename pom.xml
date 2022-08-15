@@ -15,6 +15,18 @@
     </modules>
 
     <dependencies>
+<!--        2 dependencies for JPA-->
+        <dependency>
+            <groupId>org.microjpa</groupId>
+            <artifactId>microjpa</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>6.0.0.Alpha7</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
