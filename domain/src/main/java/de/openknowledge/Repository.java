@@ -1,5 +1,7 @@
 package de.openknowledge;
 
+import org.hibernate.internal.build.AllowSysOut;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -14,71 +16,42 @@ import java.util.List;
 
 public class Repository implements RepositoryInterface {
 
-
-//    private String url;
-//    private String username;
-//    private String password;
-
-//    public Repository(String url, String username, String password) {
-//        this.url = url;
-//        this.username = username;
-//        this.password = password;
-//    }
-
-
-//    public Repository() {
-//        url = "jdbc:mysql://localhost:3306/servletDB";
-//        username = "ServletUser";
-//        password = "ForkIt";
-//    }
-
     @Override
     public void writeDB(String fName, String lName) {
-//        try{
-//            Connection connection = DriverManager.getConnection(url, username, password);
-//            Statement statement = connection.createStatement();
-//            String query = ("INSERT INTO 'servletDB'.'members' ('id', 'firstName','lastName') "
-//                    + "VALUES ({0},{1},{2});");
-//
-//            query = java.text.MessageFormat.format(query, "'2'", "'" + fName + "'", "'" + lName + "'");
-//            System.out.println(query);
-//            statement.execute(query);
 
-            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Customers to DB via JPA");
-            EntityManager entityManager = entityManagerFactory.createEntityManager();
-            EntityTransaction entityTransaction = entityManager.getTransaction();
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Customers to DB via JPA");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction entityTransaction = entityManager.getTransaction();
 
-            entityTransaction.begin();
-            Client client = new Client();
-            client.setFirstName(fName);
-            client.setLastName(lName);
+        entityTransaction.begin();
+        Client client = new Client();
+        client.setFirstName(fName);
+        client.setLastName(lName);
 
-            entityManager.persist(client);
-            entityTransaction.commit();
+        entityManager.persist(client);
+        entityTransaction.commit();
 
-            entityManager.close();
-            entityManagerFactory.close();
+        entityManager.close();
+        entityManagerFactory.close();
 
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        readDb();   //todo ABE artificial call in order to have readDB() executed at all
     }
 
     @Override
-    public List<Client> readDb(){
+    public List<Client> readDb() {
         List<Client> clientList = new ArrayList<>();
-//        try {
-////            Connection connection = DriverManager.getConnection(url, username, password);
-////            Statement statement = connection.createStatement();
-////            ResultSet resultSet = statement.executeQuery("SELECT  * FROM members");
-//            while (resultSet.next()){
-////                System.out.println("ID: " + resultSet.getString("id"));
-//                clientList.add(new Client(Long.parseLong(resultSet.getString("id")), resultSet.getString("firstName"),
-//                        resultSet.getString("lastName")));
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Customers to DB via JPA");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        Client client = entityManager.find(Client.class, 102L);
+
+        if (client != null) {
+            System.out.println(client.toString());
+        } else {
+            System.out.println("no such object found");
+        }
+
         return clientList;
     }
 }
