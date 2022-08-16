@@ -29,18 +29,6 @@ public class LoginResource {
         return clientList;
     }
 
- /*   @GET
-    @Path("clients/{name}")
-    public Client getClient(@PathParam("name") String name) {
-        Optional<Client> client = repository.getClient(name);
-        if (!client.isPresent()) {
-            System.out.println("Kein Client gefunden");
-            return null;
-        }
-        return client.get();
-    }*/
-
-
     @POST
     @Path("clients")
     @Produces(MediaType.APPLICATION_JSON)
