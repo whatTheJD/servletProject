@@ -13,5 +13,3 @@ J
 frontend/LoginServlet.html,9/c/9c0327c5cd47d2a5883a157d893769a6ed9d4b41
 n
 >application/src/test/java/de/openknowledge/ReadClientTest.java,d/1/d19066dcf0c6d4597d6ed82cc87fda0dfa649380
-m
-=application/src/main/java/de/openknowledge/LoginResource.java,c/4/c4f5a66f89f2720e447836e0128016a92f53eb43
