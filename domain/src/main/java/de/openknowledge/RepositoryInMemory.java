@@ -9,13 +9,13 @@ public class RepositoryInMemory implements RepositoryInterface {
     ArrayList<String> liste = new ArrayList<>();
 
     @Override
-    public void writeDB(String fName, String lName) {
+    public void saveClient(String fName, String lName) {
         liste.add(fName);
         liste.add(lName);
     }
 
     @Override
-    public List<Client> readDb() {
+    public List<Client> findClient() {
     return null;
     }
 }

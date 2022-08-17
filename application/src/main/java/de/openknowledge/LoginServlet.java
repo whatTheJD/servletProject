@@ -24,10 +24,10 @@ public class LoginServlet extends HttpServlet {
         System.out.println("fName: " + fName);
         System.out.println("lName: " + lName);
 
-        repository.writeDB(fName, lName);
+        repository.saveClient(fName, lName);
 
         response.getWriter().write("Your clients got updated!");
-        response.getWriter().write("New client: " + fName + lName);
+        response.getWriter().write("New client: " + fName + " " + lName);
         response.setStatus(HttpServletResponse.SC_OK);
         response.getWriter().flush();
         response.getWriter().close();
@@ -36,11 +36,14 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-        List<Client> clientList = repository.readDb();
-        for (Client client : clientList) {
-            response.getWriter().write(client.toString());
-        }
         response.setStatus(HttpServletResponse.SC_OK);
+        response.setContentType("text/html");
+        List<Client> clientList = repository.findClient();
+        response.getWriter().write("<html><body><h1>List of Saved Clients</h1>");
+        for (Client client : clientList) {
+            response.getWriter().write(client.toString() + "<br>");
+        }
+        response.getWriter().write("</body></html>");
         response.getWriter().flush();
         response.getWriter().close();
     }

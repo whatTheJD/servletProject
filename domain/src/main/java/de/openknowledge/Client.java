@@ -21,12 +21,6 @@ public class Client {
     @Column(name = "lastName")
     String lastName;
 
-//    public Client(Long id, String firstName, String lastName) {
-//        this.id = id;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//    }
-
     public Long getId() {
         return id;
     }

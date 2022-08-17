@@ -1,9 +1,12 @@
 package de.openknowledge;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 public interface RepositoryInterface {
-    void writeDB(String fName, String lName);
 
-    List<Client> readDb();
+
+    void saveClient(String fName, String lName);
+
+    List<Client> findClient();
 }

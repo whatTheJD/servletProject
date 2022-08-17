@@ -4,6 +4,9 @@ import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.startup.Tomcat;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.io.File;
 import java.sql.SQLException;
 
@@ -20,7 +23,11 @@ public class App {
         File docBase = new File(System.getProperty("java.io.tmpdir"));
         Context context = tomcat.addContext("", docBase.getAbsolutePath());
 
-        LoginServlet loginServlet = new LoginServlet(new Repository());
+
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Customers to DB via JPA");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        LoginServlet loginServlet = new LoginServlet(new Repository(entityManager)); //todo verletzt das nicht das layer-modell?
+
 
         Class servletClass = LoginServlet.class;
         Tomcat.addServlet(context, servletClass.getSimpleName(), loginServlet);
@@ -30,6 +37,8 @@ public class App {
         tomcat.start();
         System.out.println("tomcat.getServer().await()");
         tomcat.getServer().await();
+        entityManager.close();
+        entityManagerFactory.close();
 
     }
 }
