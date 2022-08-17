@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="10.3.1">
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/Client.java">
+</file>
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/LastName.java">
+</file>
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/RepositoryInterface.java">
+</file>
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/Repository.java">
+</file>
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/Name.java">
+</file>
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/infrastructure/AbstractValueObject.java">
+</file>
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/infrastructure/AbstractEntity.java">
+</file>
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/infrastructure/AbstractSimpleValueObject.java">
+</file>
+<file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/domain/src/main/java/de/openknowledge/FirstName.java">
+</file>
+</checkstyle>

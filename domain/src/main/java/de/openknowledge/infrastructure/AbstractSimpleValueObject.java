@@ -1,23 +1,22 @@
 /*
- * Copyright \(C\) open knowledge GmbH\.
+ * Copyright (C) open knowledge GmbH.
  *
- * Licensed under the Apache License, Version 2\.0 \(the "License"\);
- * you may not use this file except in compliance with the License\.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www\.apache\.org/licenses/LICENSE-2\.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied\.
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
- * limitations under the License\.
+ * limitations under the License.
  */
 
 package de.openknowledge.infrastructure;
 
 import static org.apache.commons.lang3.Validate.notNull;
-
 import static javax.persistence.AccessType.FIELD;
 
 import java.io.Serializable;
@@ -73,11 +72,11 @@ public abstract class AbstractSimpleValueObject
      * This implementation checks the value to be non-null.
      * Subclasses may override this method to alter validation and normalization.
      *
-     * @param value The constructor value.
+     * @param initialValue The constructor value.
      * @return The validated and normalized value.
      */
-    protected V validateAndNormalize(final V value) {
-        return notNull(value, "value must not be null");
+    protected V validateAndNormalize(V initialValue) {
+        return notNull(initialValue, "value must not be null");
     }
 
     /**
