@@ -1,31 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="10.3.1">
 <file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/application/src/main/java/de/openknowledge/LoginServlet.java">
-<error line="1" severity="error" message="Datei endet nicht mit einem Zeilenumbruch." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
-<error line="2" severity="error" message="Zeile entspricht nicht der erwarteten Kopfzeile &apos; * Copyright \(C\) open knowledge GmbH\.&apos;." source="com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck"/>
-<error line="8" column="1" severity="error" message="Falsche Reihenfolge des Imports von &apos;java.io.IOException&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
-<error line="24" severity="error" message="Illegal use of System.out. - use a logger instead!" source="sysout"/>
-<error line="25" severity="error" message="Illegal use of System.out. - use a logger instead!" source="sysout"/>
+<error line="42" severity="error" message="Illegal use of System.out. - use a logger instead!" source="sysout"/>
+<error line="43" severity="error" message="Illegal use of System.out. - use a logger instead!" source="sysout"/>
 </file>
 <file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/application/src/main/java/de/openknowledge/App.java">
-<error line="1" severity="error" message="Datei endet nicht mit einem Zeilenumbruch." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
-<error line="2" severity="error" message="Zeile entspricht nicht der erwarteten Kopfzeile &apos; * Copyright \(C\) open knowledge GmbH\.&apos;." source="com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck"/>
-<error line="4" column="1" severity="error" message="Falsche Reihenfolge des Imports von &apos;org.apache.cxf.endpoint.Server&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
-<error line="9" column="1" severity="error" message="Falsche Reihenfolge des Imports von &apos;javax.persistence.Persistence&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
-<error line="11" column="1" severity="error" message="Falsche Reihenfolge des Imports von &apos;java.util.ArrayList&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
-<error line="19" column="5" severity="error" message="Unkommentierte main Methode." source="com.puppycrawl.tools.checkstyle.checks.UncommentedMainCheck"/>
-<error line="25" column="17" severity="error" message="&apos;new&apos; hat eine unerwartete Einrückungstiefe von 16 (erwartet: 12)." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
-<error line="26" column="25" severity="error" message="&apos;new&apos; hat eine unerwartete Einrückungstiefe von 24 (erwartet: 16)." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
-<error line="27" column="25" severity="error" message="&apos;new&apos; hat eine unerwartete Einrückungstiefe von 24 (erwartet: 20)." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
-<error line="28" column="25" severity="error" message="&apos;.&apos; hat eine unerwartete Einrückungstiefe von 24 (erwartet: 12)." source="com.puppycrawl.tools.checkstyle.checks.indentation.IndentationCheck"/>
-<error line="43" severity="error" message="Illegal use of System.out. - use a logger instead!" source="sysout"/>
-<error line="44" column="22" severity="error" message="Die magische Zahl &apos;60&apos; sollte als Konstante definiert werden." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
-<error line="44" column="27" severity="error" message="Die magische Zahl &apos;1000&apos; sollte als Konstante definiert werden." source="com.puppycrawl.tools.checkstyle.checks.coding.MagicNumberCheck"/>
-<error line="45" severity="error" message="Illegal use of System.out. - use a logger instead!" source="sysout"/>
+<error line="43" column="5" severity="error" message="Unkommentierte main Methode." source="com.puppycrawl.tools.checkstyle.checks.UncommentedMainCheck"/>
+<error line="65" severity="error" message="Illegal use of System.out. - use a logger instead!" source="sysout"/>
+<error line="67" severity="error" message="Illegal use of System.out. - use a logger instead!" source="sysout"/>
 </file>
 <file name="/Users/jimmy.dang/Desktop/ServletProjekt/servletProject/application/src/main/java/de/openknowledge/LoginResource.java">
-<error line="2" severity="error" message="Zeile entspricht nicht der erwarteten Kopfzeile &apos; * Copyright \(C\) open knowledge GmbH\.&apos;." source="com.puppycrawl.tools.checkstyle.checks.header.RegexpHeaderCheck"/>
-<error line="10" column="1" severity="error" message="Falsche Reihenfolge des Imports von &apos;java.util.List&apos;." source="com.puppycrawl.tools.checkstyle.checks.imports.ImportOrderCheck"/>
-<error line="36" column="48" severity="error" message="Vor &apos;{&apos; fehlt ein Leerzeichen." source="com.puppycrawl.tools.checkstyle.checks.whitespace.WhitespaceAroundCheck"/>
+<error line="55" severity="error" message="Illegal use of System.out. - use a logger instead!" source="sysout"/>
 </file>
 </checkstyle>

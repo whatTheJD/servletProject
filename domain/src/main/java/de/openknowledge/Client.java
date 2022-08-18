@@ -33,6 +33,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import de.openknowledge.infrastructure.AbstractEntity;
 
 
+//TODO XMLRootElement Formdata verarbeiten - HTML Form Mapping
+
 @Entity
 @Table(name = "members")
 @NamedQueries({@NamedQuery(name = Client.READ_ALL, query = "SELECT c from Client c")})
